@@ -106,7 +106,7 @@ crop.factory('cropHost', ['$document', 'cropAreaCircle', 'cropAreaSquare', 'crop
                 });
             }
 
-            drawScene();
+            // drawScene();
         };
 
         /**
@@ -174,6 +174,7 @@ crop.factory('cropHost', ['$document', 'cropAreaCircle', 'cropAreaSquare', 'crop
         /* Newly added methods */
         //setCoordinates and getCoordinates
         this.setCoordinates = function(x, y, size) {
+            // theArea.setImage(image);
             theArea.setX(x);
             theArea.setY(y);
             theArea.setSize(size);
@@ -310,7 +311,6 @@ crop.factory('cropHost', ['$document', 'cropAreaCircle', 'cropAreaSquare', 'crop
                     'margin-top': 0
                 });
             }
-
             drawScene();
 
         };
@@ -357,7 +357,7 @@ crop.factory('cropHost', ['$document', 'cropAreaCircle', 'cropAreaSquare', 'crop
             theArea.setX(curX);
             theArea.setY(curY);
 
-            // resetCropHost();
+            resetCropHost();
             if (image !== null) {
                 theArea.setImage(image);
             }
