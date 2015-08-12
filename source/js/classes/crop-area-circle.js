@@ -32,11 +32,15 @@ crop.factory('cropAreaCircle', ['cropArea', function(CropArea) {
     var angleRadians=angleDegrees * (Math.PI / 180),
         circlePerimeterX=this._x + hSize * Math.cos(angleRadians),
         circlePerimeterY=this._y + hSize * Math.sin(angleRadians);
+        console.log(this._x);
+        console.log(this._y);
+        console.log(circlePerimeterX);
+        console.log(circlePerimeterY);
     return [circlePerimeterX, circlePerimeterY];
   };
 
   CropAreaCircle.prototype._calcResizeIconCenterCoords=function() {
-    return this._calcCirclePerimeterCoords(-45);
+    return this._calcCirclePerimeterCoords(35);
   };
 
   CropAreaCircle.prototype._isCoordWithinArea=function(coord) {
@@ -81,7 +85,7 @@ crop.factory('cropAreaCircle', ['cropArea', function(CropArea) {
         cursor = 'nesw-resize';
         var iFR, iFX, iFY;
         iFX = mouseCurX - this._posResizeStartX;
-        iFY = this._posResizeStartY - mouseCurY;
+        iFY =  mouseCurY - this._posResizeStartY;
         if(iFX>iFY) {
           iFR = this._posResizeStartSize + iFY*2;
         } else {

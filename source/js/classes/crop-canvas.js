@@ -82,8 +82,12 @@ crop.factory('cropCanvas', [function() {
       ctx.strokeStyle = colors.resizeBoxStroke;
       ctx.lineWidth = 2;
       ctx.fillStyle = colors.resizeBoxFill;
-      ctx.fillRect(centerCoords[0] - scaledBoxSize/2, centerCoords[1] - scaledBoxSize/2, scaledBoxSize, scaledBoxSize);
-      ctx.strokeRect(centerCoords[0] - scaledBoxSize/2, centerCoords[1] - scaledBoxSize/2, scaledBoxSize, scaledBoxSize);
+      ctx.fillRect(centerCoords[0] - scaledBoxSize/2, 
+        centerCoords[1] - scaledBoxSize/2, scaledBoxSize, scaledBoxSize);
+
+      ctx.strokeRect(centerCoords[0] - scaledBoxSize/2,
+       centerCoords[1] - scaledBoxSize/2, scaledBoxSize, scaledBoxSize);
+      
       ctx.restore();
     };
     this.drawIconResizeBoxNESW=function(centerCoords, boxSize, scale) {
