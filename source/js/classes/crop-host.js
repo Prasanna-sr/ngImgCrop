@@ -173,11 +173,18 @@ crop.factory('cropHost', ['$document', 'cropAreaCircle', 'cropAreaSquare', 'crop
         /* Newly added methods */
         //setCoordinates and getCoordinates
         this.setCoordinates = function(x, y, size) {
-            var xRatio = theArea._ctx.canvas.width / image.width;
-            var yRatio = theArea._ctx.canvas.height / image.height;
-            theArea.setX(x * xRatio);
-            theArea.setY(y * yRatio);        
-            theArea.setSize(size * xRatio);
+            if (!x && !y && !size) {
+                theArea.setX(theArea._ctx.canvas.width / 2);
+                theArea.setY(theArea._ctx.canvas.height / 2);
+                theArea.setSize(Math.min(200, theArea._ctx.canvas.width / 2, theArea._ctx.canvas.height / 2));
+            } else {
+                var xRatio = theArea._ctx.canvas.width / image.width;
+                var yRatio = theArea._ctx.canvas.height / image.height;
+                theArea.setX(x * xRatio);
+                theArea.setY(y * yRatio);        
+                theArea.setSize(size * xRatio);
+            }
+
             drawScene();
         };
 

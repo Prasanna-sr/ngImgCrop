@@ -72,11 +72,11 @@ crop.directive('imgCrop', ['$timeout', 'cropHost', 'cropPubSub', function($timeo
                 }))
                 .on('area-move area-resize', fnSafeApply(function(scope) {
                     if (!!scope.changeOnFly) {
-                        updateResultImage(scope);
+                        // updateResultImage(scope);
                     }
                 }))
                 .on('area-move-end area-resize-end image-updated', fnSafeApply(function(scope) {
-                    updateResultImage(scope);
+                    // updateResultImage(scope);
                 }))
                 .on('image-updated', fnSafeApply(function(scope) {
                     scope.onImageLoad({
@@ -93,23 +93,23 @@ crop.directive('imgCrop', ['$timeout', 'cropHost', 'cropPubSub', function($timeo
             });
             scope.$watch('areaType', function() {
                 cropHost.setAreaType(scope.areaType);
-                updateResultImage(scope);
+                // updateResultImage(scope);
             });
             scope.$watch('areaMinSize', function() {
                 cropHost.setAreaMinSize(scope.areaMinSize);
-                updateResultImage(scope);
+                // updateResultImage(scope);
             });
             scope.$watch('resultImageSize', function() {
                 cropHost.setResultImageSize(scope.resultImageSize);
-                updateResultImage(scope);
+                // updateResultImage(scope);
             });
             scope.$watch('resultImageFormat', function() {
                 cropHost.setResultImageFormat(scope.resultImageFormat);
-                updateResultImage(scope);
+                // updateResultImage(scope);
             });
             scope.$watch('resultImageQuality', function() {
                 cropHost.setResultImageQuality(scope.resultImageQuality);
-                updateResultImage(scope);
+                // updateResultImage(scope);
             });
 
             // Update CropHost dimensions when the directive element is resized
@@ -119,7 +119,7 @@ crop.directive('imgCrop', ['$timeout', 'cropHost', 'cropPubSub', function($timeo
                 },
                 function(value) {
                     cropHost.setMaxDimensions(value[0], value[1]);
-                    updateResultImage(scope);
+                    // updateResultImage(scope);
                 },
                 true
             );
