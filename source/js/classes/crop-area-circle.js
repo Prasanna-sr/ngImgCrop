@@ -82,7 +82,7 @@ crop.factory('cropAreaCircle', ['cropArea', function(CropArea) {
             res = true;
             this._events.trigger('area-move');
         } else if (this._boxResizeIsDragging) {
-            cursor = 'nesw-resize';
+            cursor = 'nwse-resize';
             var iFR, iFX, iFY;
             iFX = mouseCurX - this._posResizeStartX;
             iFY = mouseCurY - this._posResizeStartY;
@@ -97,7 +97,7 @@ crop.factory('cropAreaCircle', ['cropArea', function(CropArea) {
             res = true;
             this._events.trigger('area-resize');
         } else if (this._isCoordWithinBoxResize([mouseCurX, mouseCurY])) {
-            cursor = 'nesw-resize';
+            cursor = 'nwse-resize';
             this._areaIsHover = false;
             this._boxResizeIsHover = true;
             res = true;

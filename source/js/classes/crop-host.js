@@ -175,7 +175,7 @@ crop.factory('cropHost', ['$document', 'cropAreaCircle', 'cropAreaSquare', 'crop
         this.setCoordinates = function(x, y, size) {
             var xRatio = theArea._ctx.canvas.width / image.width;
             var yRatio = theArea._ctx.canvas.height / image.height;
-            theArea.setX(x * xRatio);        
+            theArea.setX(x * xRatio);
             theArea.setY(y * yRatio);        
             theArea.setSize(size * xRatio);
             drawScene();
