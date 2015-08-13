@@ -52,7 +52,6 @@ crop.factory('cropHost', ['$document', 'cropAreaCircle', 'cropAreaSquare', 'crop
         function drawScene() {
             // clear canvas
             ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-
             if (image !== null) {
                 // draw source image
                 ctx.drawImage(image, 0, 0, ctx.canvas.width, ctx.canvas.height);
@@ -174,18 +173,26 @@ crop.factory('cropHost', ['$document', 'cropAreaCircle', 'cropAreaSquare', 'crop
         /* Newly added methods */
         //setCoordinates and getCoordinates
         this.setCoordinates = function(x, y, size) {
-            // theArea.setImage(image);
-            theArea.setX(x);
-            theArea.setY(y);
-            theArea.setSize(size);
+            var xRatio = theArea._ctx.canvas.width / image.width;
+            var yRatio = theArea._ctx.canvas.height / image.height;
+            theArea.setX(x * xRatio);        
+            theArea.setY(y * yRatio);        
+            theArea.setSize(size * xRatio);
             drawScene();
         };
 
         this.getCoordinates = function() {
-            return {
-                x: theArea.getX(),
-                y: theArea.getY(),
-                size: theArea.getSize()
+            if (image) {
+                var xRatio = theArea._ctx.canvas.width / image.width;
+                var yRatio = theArea._ctx.canvas.height / image.height;
+                var x = theArea.getX() / xRatio;
+                var y = theArea.getY() / yRatio;
+                var size = theArea.getSize() / xRatio;
+                return {
+                    x: x,
+                    y: y,
+                    size: size
+                }
             }
         };
 
@@ -207,7 +214,7 @@ crop.factory('cropHost', ['$document', 'cropAreaCircle', 'cropAreaSquare', 'crop
         this.setNewImageSource = function(imageSource) {
             image = null;
             resetCropHost();
-            events.trigger('image-updated');
+            // events.trigger('image-updated');
             if (!!imageSource) {
                 var newImage = new Image();
                 if (imageSource.substring(0, 4).toLowerCase() === 'http') {
